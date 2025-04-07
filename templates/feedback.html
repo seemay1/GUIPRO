@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+  {% extends "base.html" %}
+  {% block content %}
+  <h2>Customer Feedback</h2>
+  <div class="feedback-section">
+      {% if feedback %}
+          {% for entry in feedback %}
+          <div class="feedback-card">
+              <strong>{{ entry.coffee_name }}</strong> - Rated: {{ entry.rating }}/5<br>
+              <p>"{{ entry.comment }}"</p>
+              <small>{{ entry.timestamp }}</small>
+          </div>
+          {% endfor %}
+      {% else %}
+          <p>No feedback submitted yet.</p>
+      {% endif %}
+  </div>
+  {% endblock %}
+</body>
+</html>

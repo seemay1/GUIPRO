@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <section class="hero">
+        <h2>Welcome to Brew Haven</h2>
+        <p>Your cozy corner for handcrafted coffee delights. Explore our menu and share your thoughts!</p>
+        <a href="{{ url_for('menu') }}" class="btn">View Our Menu</a>
+    </section>
+    {% endblock %}
+</body>
+</html>

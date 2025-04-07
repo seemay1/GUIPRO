@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <h2>Our Coffee Menu</h2>
+    <div class="coffee-menu">
+        {% for coffee in coffees %}
+        <div class="coffee-card">
+            <img src="{{ coffee.image }}" alt="{{ coffee.name }}">
+            <h3>{{ coffee.name }}</h3>
+            <p>{{ coffee.description }}</p>
+            <form action="{{ url_for('feedback') }}" method="POST" class="feedback-form">
+                <input type="hidden" name="coffee_id" value="{{ coffee.id }}">
+                <label for="rating-{{ coffee.id }}">Rating:</label>
+                <select name="rating" id="rating-{{ coffee.id }}">
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Great</option>
+                    <option value="3">3 - Good</option>
+                    <option value="2">2 - Fair</option>
+                    <option value="1">1 - Poor</option>
+                </select>
+                <textarea name="comment" placeholder="Leave a comment..." required></textarea>
+                <button type="submit">Submit Feedback</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Form</title>
+</head>
+<body>
+    <div class="container">
+  <h1>Contact Us</h1>
+
+  {% if errors %}
+    <ul class="errors">
+      {% for error in errors %}
+        <li class="red">{{ error }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <form method="POST" action="/submit">
+    <label>Name:</label><input type="text" name="name" required><br>
+    <label>Email:</label><input type="email" name="email" required><br>
+    <label>Phone Number:</label><input type="text" name="phone" required><br>
+    <label>Message:</label><textarea name="message" required></textarea><br>
+
+    <label>Subject:</label>
+    <select name="subject">
+      <option>General Inquiry</option>
+      <option>Support Request</option>
+      <option>Technical Issues</option>
+      <option>Other</option>
+    </select>
+      <label>If other, please specify:</label>
+    <input type="text" name="other_subject"><br>
+    <label>Preferred Contact Method:</label>
+      <div class="radio">
+    <input type="radio" name="contact_method" value="Email"> Email<br>
+    <input type="radio" name="contact_method" value="Phone"> Phone<br>
+    <input type="radio" name="contact_method" value="Both"> Both<br>
+    </div><br><br>
+      <div class="terms"><input type="checkbox" name="agreement" value="yes" required > I agree to the terms and conditions<br></div>
+
+
+    <button type="submit">Submit</button>
+  </form>
+        </div>
+</body>
+</html>
